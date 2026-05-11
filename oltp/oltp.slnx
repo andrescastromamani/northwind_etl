@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="oltp/oltp.sqlproj" Id="078a247d-a764-4441-906f-64e6daa506ec">
+    <Build />
+    <Deploy />
+  </Project>
+</Solution>
