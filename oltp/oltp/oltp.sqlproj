@@ -77,5 +77,16 @@
     <Build Include="schemas\stored_procedures\GetCustomerChangesByRowVersion.sql" />
     <Build Include="schemas\stored_procedures\GetEmployeeChangesByRowVersion.sql" />
     <Build Include="schemas\stored_procedures\GetProductChangesByRowVersion.sql" />
+    <Build Include="schemas\stored_procedures\CustOrderHist.sql" />
+    <Build Include="schemas\stored_procedures\CustOrdersDetail.sql" />
+    <Build Include="schemas\stored_procedures\CustOrdersOrders.sql" />
+    <Build Include="schemas\stored_procedures\Employee Sales by Country.sql" />
+    <Build Include="schemas\stored_procedures\GetOrderChangesByRowVersion.sql" />
+    <Build Include="schemas\stored_procedures\GetShipperChangesByRowVersion.sql" />
+    <Build Include="schemas\stored_procedures\Sales by Year.sql" />
+    <Build Include="schemas\stored_procedures\SalesByCategory.sql" />
+    <Build Include="schemas\stored_procedures\Ten Most Expensive Products.sql" />
+    <Build Include="schemas\tables\CustomerCustomerDemo.sql" />
+    <Build Include="schemas\tables\CustomerDemographics.sql" />
   </ItemGroup>
 </Project>
