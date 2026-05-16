@@ -1,9 +1,9 @@
-﻿CREATE TABLE [dbo].[DIM_CUSTOMER](
-	[CustomerID] [nchar](5) NOT NULL,
-	[CompanyName] [nvarchar](40) NULL,
-	[ContactName] [nvarchar](30) NULL,
-	[City] [nvarchar](15) NULL,
-	[Region] [nvarchar](15) NULL,
-	[Country] [nvarchar](15) NULL,
-	PRIMARY KEY CLUSTERED ([CustomerID]));
-GO
+﻿CREATE TABLE [dbo].[DimCustomer] (
+    [CustomerKey] INT           IDENTITY (1, 1) NOT NULL,
+    [CustomerID]  NCHAR (5)     NOT NULL,
+    [CompanyName] NVARCHAR (40) NOT NULL,
+    [City]        NVARCHAR (15) NULL,
+    [Country]     NVARCHAR (15) NULL,
+    PRIMARY KEY CLUSTERED ([CustomerKey] ASC)
+);
+

@@ -1,15 +1,18 @@
 ﻿CREATE PROCEDURE [dbo].[DW_MergeDimProduct]
 AS
 BEGIN
-    SET NOCOUNT ON;
     UPDATE dp
-    SET ProductName = sc.ProductName,
-        CategoryName = sc.CategoryName,
-        SupplierName = sc.SupplierName,
-        UnitPrice = sc.UnitPrice,
-        Discontinued = sc.Discontinued
-    FROM dbo.DIM_PRODUCT AS dp
-    INNER JOIN staging.Product AS sc ON dp.ProductSK = sc.ProductSK;
+    SET dp.[ProductName] = sp.[ProductName],
+        dp.[CategoryName] = sp.[CategoryName],
+        dp.[SupplierName] = sp.[SupplierName],
+        dp.[UnitPrice] = sp.[UnitPrice]
+    FROM [dbo].[DimProduct] dp
+    INNER JOIN [staging].[product] sp ON dp.[ProductID] = sp.[ProductID];
 
-END;
+    INSERT INTO [dbo].[DimProduct] ([ProductID], [ProductName], [CategoryName], [SupplierName], [UnitPrice])
+    SELECT sp.[ProductID], sp.[ProductName], sp.[CategoryName], sp.[SupplierName], sp.[UnitPrice]
+    FROM [staging].[product] sp
+    LEFT JOIN [dbo].[DimProduct] dp ON sp.[ProductID] = dp.[ProductID]
+    WHERE dp.[ProductID] IS NULL;
+END
 GO

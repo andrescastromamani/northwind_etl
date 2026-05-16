@@ -1,30 +1,20 @@
-﻿CREATE TABLE [dbo].[FACT_SALES](
-	[SaleID] [int] IDENTITY(1,1) NOT NULL,
-	[CustomerID] [nchar](5) NULL,
-	[ProductID] [int] NULL,
-	[ProductSK] [int] NOT NULL,
-	[EmployeeID] [int] NULL,
-	[ShipperID] [int] NULL,
-	[DateID] [int] NULL,
-	[Quantity] [int] NULL,
-	[UnitPrice] [money] NULL,
-	[Discount] [float] NULL,
-	[TotalAmount] [money] NULL,
-	PRIMARY KEY CLUSTERED ([SaleID] ASC));
-GO
+﻿CREATE TABLE [dbo].[FactSales] (
+    [SalesKey]    BIGINT   IDENTITY (1, 1) NOT NULL,
+    [OrderID]     INT      NOT NULL,
+    [CustomerKey] INT      NOT NULL,
+    [EmployeeKey] INT      NOT NULL,
+    [ProductKey]  INT      NOT NULL,
+    [ShipperKey]  INT      NOT NULL,
+    [DateKey]     INT      NOT NULL,
+    [UnitPrice]   MONEY    NOT NULL,
+    [Quantity]    SMALLINT NOT NULL,
+    [Discount]    REAL     NOT NULL,
+    [TotalAmount] AS       (CONVERT([money],([UnitPrice]*[Quantity])*((1)-[Discount]))),
+    PRIMARY KEY CLUSTERED ([SalesKey] ASC),
+    CONSTRAINT [FK_FactSales_DimCustomer] FOREIGN KEY ([CustomerKey]) REFERENCES [dbo].[DimCustomer] ([CustomerKey]),
+    CONSTRAINT [FK_FactSales_DimDate] FOREIGN KEY ([DateKey]) REFERENCES [dbo].[DimDate] ([DateKey]),
+    CONSTRAINT [FK_FactSales_DimEmployee] FOREIGN KEY ([EmployeeKey]) REFERENCES [dbo].[DimEmployee] ([EmployeeKey]),
+    CONSTRAINT [FK_FactSales_DimProduct] FOREIGN KEY ([ProductKey]) REFERENCES [dbo].[DimProduct] ([ProductKey]),
+    CONSTRAINT [FK_FactSales_DimShipper] FOREIGN KEY ([ShipperKey]) REFERENCES [dbo].[DimShipper] ([ShipperKey])
+);
 
-ALTER TABLE [dbo].[FACT_SALES] ADD FOREIGN KEY([CustomerID])
-REFERENCES [dbo].[DIM_CUSTOMER] ([CustomerID])
-GO
-ALTER TABLE [dbo].[FACT_SALES] ADD FOREIGN KEY([DateID])
-REFERENCES [dbo].[DIM_DATE] ([DateID])
-GO
-ALTER TABLE [dbo].[FACT_SALES] ADD FOREIGN KEY([EmployeeID])
-REFERENCES [dbo].[DIM_EMPLOYEE] ([EmployeeID])
-GO
-ALTER TABLE [dbo].[FACT_SALES] ADD FOREIGN KEY([ProductSK])
-REFERENCES [dbo].[DIM_PRODUCT] ([ProductSK])
-GO
-ALTER TABLE [dbo].[FACT_SALES] ADD FOREIGN KEY([ShipperID])
-REFERENCES [dbo].[DIM_SHIPPER] ([ShipperID])
-GO

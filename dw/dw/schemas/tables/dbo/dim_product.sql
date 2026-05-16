@@ -1,10 +1,10 @@
-﻿CREATE TABLE [dbo].[DIM_PRODUCT](
-	[ProductSK] [int] IDENTITY(1,1) NOT NULL,
-	[ProductID] [int] NOT NULL,
-	[ProductName] [nvarchar](40) NULL,
-	[CategoryName] [nvarchar](15) NULL,
-	[SupplierName] [nvarchar](40) NULL,
-	[UnitPrice] [money] NULL,
-	[Discontinued] [bit] NULL,
- CONSTRAINT [PK_DIM_PRODUCT] PRIMARY KEY CLUSTERED ([ProductSK] ASC));
-GO
+﻿CREATE TABLE [dbo].[DimProduct] (
+    [ProductKey]   INT           IDENTITY (1, 1) NOT NULL,
+    [ProductID]    INT           NOT NULL,
+    [ProductName]  NVARCHAR (40) NOT NULL,
+    [CategoryName] NVARCHAR (15) NULL,
+    [SupplierName] NVARCHAR (40) NULL,
+    [UnitPrice]    MONEY         NULL,
+    PRIMARY KEY CLUSTERED ([ProductKey] ASC)
+);
+

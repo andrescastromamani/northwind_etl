@@ -63,6 +63,7 @@
     <Folder Include="schemas\stored_procedures" />
     <Folder Include="schemas\security" />
     <Folder Include="schemas\security\schemas" />
+    <Folder Include="scripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="schemas\tables\dbo\dim_customer.sql" />
@@ -75,7 +76,23 @@
     <Build Include="schemas\stored_procedures\GetLastPackageRowVersion.sql" />
     <Build Include="schemas\security\schemas\staging.sql" />
     <Build Include="schemas\tables\staging\product.sql" />
-    <Build Include="schemas\stored_procedures\DW_MergeDimProduct.sql" />
     <Build Include="schemas\stored_procedures\UpdateLastPackageRowVersion.sql" />
+    <Build Include="schemas\stored_procedures\DW_MergeDimEmployee.sql" />
+    <Build Include="schemas\stored_procedures\DW_MergeDimProduct.sql" />
+    <Build Include="schemas\stored_procedures\DW_MergeDimCustomer_1.sql" />
+    <Build Include="schemas\stored_procedures\DW_MergeDimShipper.sql" />
+    <Build Include="schemas\stored_procedures\DW_MergeFactSales.sql" />
+    <Build Include="schemas\tables\staging\customer.sql" />
+    <Build Include="schemas\tables\staging\employee.sql" />
+    <Build Include="schemas\tables\staging\sales.sql" />
+    <Build Include="schemas\tables\staging\shipper.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="scripts\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="scripts\DimDate.Data.sql" />
+    <None Include="scripts\PackageConfig.Data.sql" />
+    <None Include="scripts\PatchDimDate.Data.sql" />
   </ItemGroup>
 </Project>

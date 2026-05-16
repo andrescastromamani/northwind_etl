@@ -1,10 +1,15 @@
-﻿CREATE TABLE [dbo].[DIM_DATE](
-	[DateID] [int] NOT NULL,
-	[FullDate] [date] NULL,
-	[Year] [int] NULL,
-	[Month] [int] NULL,
-	[MonthName] [nvarchar](15) NULL,
-	[Quarter] [int] NULL,
-	[Day] [int] NULL,
-	PRIMARY KEY CLUSTERED ([DateID]));
-GO
+﻿CREATE TABLE [dbo].[DimDate] (
+    [DateKey]           INT           NOT NULL,
+    [FullDate]          DATE          NOT NULL,
+    [DayNumberOfWeek]   INT           NOT NULL,
+    [DayNameOfWeek]     NVARCHAR (15) NOT NULL,
+    [DayNumberOfMonth]  INT           NOT NULL,
+    [DayNumberOfYear]   INT           NOT NULL,
+    [WeekNumberOfYear]  INT           NOT NULL,
+    [MonthName]         NVARCHAR (15) NOT NULL,
+    [MonthNumberOfYear] INT           NOT NULL,
+    [CalendarQuarter]   INT           NOT NULL,
+    [CalendarYear]      INT           NOT NULL,
+    [CalendarSemester]  INT           NOT NULL,
+    CONSTRAINT [PK_DimDate] PRIMARY KEY CLUSTERED ([DateKey] ASC)
+);

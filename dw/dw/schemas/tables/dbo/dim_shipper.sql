@@ -1,5 +1,8 @@
-﻿CREATE TABLE [dbo].[DIM_SHIPPER](
-	[ShipperID] [int] NOT NULL,
-	[CompanyName] [nvarchar](40) NULL,
-	PRIMARY KEY CLUSTERED ([ShipperID] ASC));
-GO
+﻿CREATE TABLE [dbo].[DimShipper] (
+    [ShipperKey]  INT           IDENTITY (1, 1) NOT NULL,
+    [ShipperID]   INT           NOT NULL,
+    [CompanyName] NVARCHAR (40) NOT NULL,
+    [Phone]       NVARCHAR (24) NULL,
+    PRIMARY KEY CLUSTERED ([ShipperKey] ASC)
+);
+
